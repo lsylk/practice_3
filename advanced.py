@@ -89,9 +89,9 @@ def word_length_sorted(words):
 
         else:
 
-            (words_len[length_word]).append(word)
+            words_len[length_word].append(word)
 
-            (words_len[length_word]).sort()
+            words_len[length_word].sort()
 
     return words_len.items()
 
