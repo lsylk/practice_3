@@ -30,7 +30,35 @@ def top_chars(phrase):
 
     """
 
-    return []
+    letters_count = {}
+
+    for char in phrase.replace(" ", ""):
+
+        if char not in letters_count:
+
+            letters_count[char] = 1
+
+        else:
+
+            letters_count[char] += 1
+
+    max_count = 0
+
+    top_letters = []
+
+    for letter in letters_count:
+
+        if letters_count[letter] > max_count:
+
+            max_count = letters_count[letter]
+
+    for letter in letters_count:
+
+        if letters_count[letter] == max_count:
+
+            top_letters.append(letter)
+
+    return top_letters
 
 
 def word_length_sorted(words):
@@ -49,12 +77,25 @@ def word_length_sorted(words):
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
 
-    return []
+    words_len = {}
 
+    for word in words:
+
+        length_word = len(word)
+
+        if length_word not in words_len:
+
+            words_len[length_word] = [word]
+
+        else:
+
+            (words_len[length_word]).append(word)
+
+            (words_len[length_word]).sort()
+
+    return words_len.items()
 
 #####################################################################
-# You can ignore everything below this.
-
 
 if __name__ == "__main__":
     print

@@ -253,13 +253,9 @@ def get_sum_zero_pairs(numbers):
 
     for num in nums:
 
-        if num > 0 and -num in nums:
+        if num >= 0 and -num in nums:
 
             pairs.append([-num, num])
-
-        elif num == 0:
-
-            pairs.append([num, 0])
 
     return pairs
 
@@ -302,18 +298,34 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    # kids_names = set(names)
+    kids_names = {}
 
-    # results = [names[0]]
+    for name in names:
 
-    # for char in names[0]:
+        first_letter_of_name = name[0]
 
+        if first_letter_of_name not in kids_names:
 
-    # return []
+            kids_names[(first_letter_of_name)] = [name]
 
+        else:
+
+            (kids_names[(first_letter_of_name)]).append(name)
+
+    results = [names[0]]
+
+    print results
+
+    for result in results:
+
+        if result[-1] in kids_names:
+
+            results.append(kids_names[result[-1]])
+
+    return results
 
 #####################################################################
-# You can ignore everything below this.
+
 
 def print_dict(d):
     # This method is used to print dictionaries in key-alphabetical
@@ -335,5 +347,5 @@ if __name__ == "__main__":
     print
     import doctest
     if doctest.testmod().failed == 0:
-        print "*** ALL TESTS PASSED ***"
+        print "*** ALL TESTS PASSED! ***"
     print
