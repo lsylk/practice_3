@@ -300,27 +300,32 @@ def kids_game(names):
 
     kids_names = {}
 
+    first_name = names.pop(0)
+
     for name in names:
 
         first_letter_of_name = name[0]
 
         if first_letter_of_name not in kids_names:
 
-            kids_names[(first_letter_of_name)] = [name]
+            kids_names[first_letter_of_name] = [name]
 
         else:
 
-            (kids_names[(first_letter_of_name)]).append(name)
+            kids_names[first_letter_of_name].append(name)
 
-    results = [names[0]]
+    results = [first_name]
 
-    print results
+    while True:
 
-    for result in results:
+        start_letter = results[-1][-1]
 
-        if result[-1] in kids_names:
+        if not kids_names.get(start_letter):
+            break
 
-            results.append(kids_names[result[-1]])
+        word = kids_names[start_letter].pop(0)
+
+        results.append(word)
 
     return results
 
