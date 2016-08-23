@@ -247,28 +247,21 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    # pairs = []
+    pairs = []
 
-    # nums = set(numbers)
+    nums = set(numbers)
 
-    # for num in nums:
+    for num in nums:
 
-    #     if -num in nums:
+        if num > 0 and -num in nums:
 
-    #         pairs.append([-num, num])
+            pairs.append([-num, num])
 
-    # return pairs
+        elif num == 0:
 
-    result = []
-    s = set(numbers)
+            pairs.append([num, 0])
 
-    for x in s:
-        if x >= 0 and -x in s:
-            result.append([-x, x])
-
-    return result
-
-
+    return pairs
 
 
 def kids_game(names):
@@ -309,7 +302,14 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    return []
+    # kids_names = set(names)
+
+    # results = [names[0]]
+
+    # for char in names[0]:
+
+
+    # return []
 
 
 #####################################################################
