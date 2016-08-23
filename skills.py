@@ -32,7 +32,7 @@ def without_duplicates(words):
         [2, 33333, 111111]
     """
 
-    return []
+    return set(words)
 
 
 def find_unique_common_items(items1, items2):
@@ -62,7 +62,7 @@ def find_unique_common_items(items1, items2):
         [2]
     """
 
-    return []
+    return set(items1).intersection(set(items2))
 
 
 def count_words(phrase):
@@ -90,7 +90,19 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
 
-    return {}
+    word_count = {}
+
+    for word in phrase.split(" "):
+
+        if word not in word_count:
+
+            word_count[word] = 1
+
+        else:
+
+            word_count[word] += 1
+
+    return word_count
 
 
 def translate_to_pirate_talk(phrase):
@@ -133,7 +145,48 @@ def translate_to_pirate_talk(phrase):
         'me swabbie be not a man!'
     """
 
-    return ""
+    pirate_speak = {"sir": "matey",
+                    "hotel": "fleabag inn",
+                    "student": "swabbie",
+                    "boy": "matey",
+                    "man": "matey",
+                    "professor": "foul blaggart",
+                    "restaurant": "galley",
+                    "your": "yer",
+                    "excuse": "arr",
+                    "students": "swabbies",
+                    "are": "be",
+                    "restroom": "head",
+                    "my": "me",
+                    "is": "be"}
+
+    translation = ""
+
+    words = phrase.split(" ")
+
+    for word in words:
+
+        if word == words[-1]:
+
+            if word in pirate_speak:
+
+                translation += pirate_speak[word]
+
+            else:
+
+                translation += word
+
+        else:
+
+            if word in pirate_speak:
+
+                translation += pirate_speak[word] + " "
+
+            else:
+
+                translation += word + " "
+
+    return translation
 
 
 def sort_by_word_length(words):
@@ -150,7 +203,21 @@ def sort_by_word_length(words):
         [(1, ['a']), (2, ['ok', 'an']), (3, ['day']), (5, ['apple'])]
     """
 
-    return []
+    words_len = {}
+
+    for word in words:
+
+        length = len(word)
+
+        if length not in words_len:
+
+            words_len[length] = [word]
+
+        else:
+
+            (words_len[length]).append(word)
+
+    return words_len.items()
 
 
 def get_sum_zero_pairs(numbers):
@@ -180,7 +247,28 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    return []
+    # pairs = []
+
+    # nums = set(numbers)
+
+    # for num in nums:
+
+    #     if -num in nums:
+
+    #         pairs.append([-num, num])
+
+    # return pairs
+
+    result = []
+    s = set(numbers)
+
+    for x in s:
+        if x >= 0 and -x in s:
+            result.append([-x, x])
+
+    return result
+
+
 
 
 def kids_game(names):
