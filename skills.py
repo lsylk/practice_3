@@ -321,6 +321,7 @@ def kids_game(names):
         start_letter = results[-1][-1]
 
         if not kids_names.get(start_letter):
+
             break
 
         word = kids_names[start_letter].pop(0)
